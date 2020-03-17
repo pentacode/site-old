@@ -20,6 +20,8 @@ into the {body} of the default.hbs template --}}
                     <strong>Personal- und Dienstplanung</strong>, <strong>Zeiterfassung</strong> und <strong>Kassenbuch</strong> in einem
                     modernen, intutiven und leistungsfähigem Packet.
                 </h3>
+
+                <img class="site-hero-image" src="{{asset "img/screens/roster.png"}}">
             </div>
         </div>
     </div>
@@ -28,6 +30,15 @@ into the {body} of the default.hbs template --}}
 {{!-- The main content area --}}
 <main id="site-main" class="site-main outer">
     <div class="inner posts">
+        {{#get "posts" filter="primary_tag:features"}}
+            {{#foreach posts}}
+                <section class="feature">
+                    <h2>{{title}}</h2>
+                    <img src="{{img_url feature_image}}" alt="{{title}}"/>
+                    {{ content }}
+                </section>
+            {{/foreach}}
+        {{/get}}
     </div>
 </main>
 

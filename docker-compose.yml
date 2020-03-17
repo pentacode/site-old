@@ -7,7 +7,7 @@ services:
     ports:
       - $PTC_SITE_PORT:2368
     environment:
-      - NODE_ENV=development
+      - NODE_ENV
       - url=$PTC_SITE_URL
       - mail__transport=SMTP
       - mail__options__host=$PTC_EMAIL_SERVER

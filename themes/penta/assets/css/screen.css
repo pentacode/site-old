@@ -154,7 +154,6 @@ body {
     align-items: center;
     padding: 6vw 3vw;
     min-height: 200px;
-    max-height: 340px;
 }
 
 .site-title {
@@ -197,9 +196,9 @@ body {
 }
 
 .site-home-header .site-header-content {
-    align-items: flex-start;
     padding: 5vw 3vw 6vw;
-    max-width: 600px;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .site-home-header .site-title {
@@ -211,17 +210,26 @@ body {
     font-size: 2.2rem;
     font-weight: 300;
     text-align: left;
+    max-width: 600px;
 }
 
 .site-home-header h3 {
     font-weight: normal;
-    line-height: 2em;
+    line-height: 1.6em;
     margin: 1em 0;
+    max-width: 500px;
 }
 
 .site-home-header h3 strong {
     color: var(--blue);
     font-weight: normal;
+}
+
+.site-home-header .site-hero-image {
+    box-shadow: rgba(0, 0, 0, 0.3) 0 2px 10px -3px;
+    border-radius: 10px;
+    border: solid 5px #fff;
+    margin-top: 50px;
 }
 
 /* 4.2 Archive header (tag and author post lists)
@@ -424,18 +432,20 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
 .nav li a:before {
     content: "";
     position: absolute;
-    right: 100%;
-    bottom: 8px;
     left: 12px;
-    height: 1px;
-    background: #fff;
+    right: 12px;
+    bottom: 8px;
+    height: 2px;
+    background: currentColor;
     opacity: 0.25;
-    transition: all 0.35s ease-in-out;
+    transform: scale(0, 1);
+    transition: all 0.2s ease-in-out;
 }
 
-.nav li a:hover:before {
-    right: 12px;
-    opacity: 0.5;
+.nav li a:hover:before,
+.nav li.nav-current a:before {
+    transform: scale(1, 1);
+    opacity: 1;
 }
 
 .nav li.nav-current a {
@@ -1887,8 +1897,6 @@ Usage (In Ghost editor):
 /* ---------------------------------------------------------- */
 
 .read-next {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    background: color(var(--darkgrey) l(-5%));
 }
 
 .read-next-feed {
@@ -1908,12 +1916,10 @@ Usage (In Ghost editor):
 }
 
 .read-next .post-card-primary-tag {
-    color: #fff;
     opacity: 0.6;
 }
 
 .read-next .post-card-title {
-    color: #fff;
     opacity: 0.8;
     transition: all 0.2s ease-in-out;
 }
@@ -1923,7 +1929,7 @@ Usage (In Ghost editor):
 }
 
 .read-next .post-card-excerpt {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(0, 0, 0, 0.6);
 }
 
 .read-next .static-avatar {
@@ -1931,11 +1937,11 @@ Usage (In Ghost editor):
 }
 
 .read-next .post-card-byline-content {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(0, 0, 0, 0.6);
 }
 
 .read-next .post-card-byline-content a {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(0, 0, 0, 0.8);
 }
 
 .read-next-card {
@@ -1947,8 +1953,8 @@ Usage (In Ghost editor):
     margin: 0 25px 50px;
     padding: 25px;
     background: linear-gradient(
-        color(var(--darkgrey) l(+2%)),
-        color(var(--darkgrey) l(-5%))
+        color(var(--whitegrey) l(+2%)),
+        color(var(--whitegrey) l(-5%))
     );
     border-radius: 3px;
 }
@@ -1963,7 +1969,7 @@ Usage (In Ghost editor):
 
 .read-next-card-header h3 {
     margin: 0;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(0, 0, 0, 0.6);
     font-size: 1.2rem;
     line-height: 1em;
     font-weight: 300;
@@ -1972,7 +1978,6 @@ Usage (In Ghost editor):
 }
 
 .read-next-card-header h3 a {
-    color: #fff;
     font-weight: 500;
     text-decoration: none;
     opacity: 0.8;
@@ -2000,7 +2005,7 @@ Usage (In Ghost editor):
     align-items: flex-start;
     margin: 0;
     padding: 20px 0;
-    border-bottom: rgba(255, 255, 255, 0.1);
+    border-bottom: rgba(0, 0, 0, 0.1);
 }
 
 .read-next-card-content li:last-of-type {
@@ -2017,7 +2022,6 @@ Usage (In Ghost editor):
 
 .read-next-card-content li a {
     display: block;
-    color: #fff;
     opacity: 0.8;
 }
 
@@ -2042,7 +2046,7 @@ Usage (In Ghost editor):
 
 .read-next-card-meta p {
     margin: 0;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(0, 0, 0, 0.6);
 }
 
 .read-next-card-footer {
@@ -2052,16 +2056,16 @@ Usage (In Ghost editor):
 
 .read-next-card-footer a {
     padding: 7px 12px 8px 14px;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    color: rgba(0, 0, 0, 0.6);
     font-size: 1.3rem;
     border-radius: 999px;
     transition: all 0.35s ease-in-out;
 }
 
 .read-next-card-footer a:hover {
-    border-color: var(--yellow);
-    color: var(--yellow);
+    border-color: var(--blue);
+    color: var(--blue);
     text-decoration: none;
 }
 
@@ -2824,8 +2828,7 @@ Usage (In Ghost editor):
 
 .site-footer {
     position: relative;
-    padding-top: 20px;
-    padding-bottom: 60px;
+    padding: 10px;
 }
 
 .site-footer-content {
