@@ -7,6 +7,13 @@ services:
     ports:
       - $PTC_SITE_PORT:2368
     environment:
+      - NODE_ENV=development
       - url=$PTC_SITE_URL
+      - mail__transport=SMTP
+      - mail__options__host=$PTC_EMAIL_SERVER
+      - mail__options__port"=$PTC_EMAIL_PORT
+      - mail__options__auth__user=$PTC_EMAIL_USER
+      - mail__options__auth__pass=$PTC_EMAIL_PASSWORD
+      - mail__from=$PTC_EMAIL_FROM
     volumes:
       - ./:/var/lib/ghost/content
