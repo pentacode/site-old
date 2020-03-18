@@ -225,13 +225,6 @@ body {
     font-weight: normal;
 }
 
-.site-home-header .site-hero-image {
-    box-shadow: rgba(0, 0, 0, 0.3) 0 2px 10px -3px;
-    border-radius: 10px;
-    border: solid 5px #fff;
-    margin-top: 50px;
-}
-
 /* 4.2 Archive header (tag and author post lists)
 /* ---------------------------------------------------------- */
 
