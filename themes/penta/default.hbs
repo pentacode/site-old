@@ -117,6 +117,42 @@
                 $('.subscribe-email').val('');
             });
         });
+
+        /* CALL TO ACTION SETUP */
+
+        function scheduleDemo() {
+            Beacon("config", {
+                hideAvatars: true,
+                messaging: {
+                    chatEnabled: false,
+                    contactForm: {
+                        allowAttachments: false,
+                        showSubject: false
+                    }
+                },
+                labels: {
+                    sendAMessage: "Einen Demotermin Vereinbaren",
+                    howCanWeHelp: "Wir freuen uns darauf, Ihnen Pentacode vorzustellen und nehmen " +
+                        "uns gerne Zeit, Ihre Wünsche und Anforderungen zu besprechen.",
+                    responseTime: "",
+                    messageLabel: "Erzählen Sie uns ein klein wenig über Ihren Betrieb " +
+                        "damit wir besser auf Ihre Wünschen eingehen können!",
+                    messageSubmitLabel: "Anfrage Senden",
+                    wereHereToHelp: "",
+                    weAreOnIt: "Vielen Dank für Ihre Anfrage!",
+                    messageConfirmationText: "Wir werden uns Zeitnah bei Ihnen melden um einen Termin zu vereinbaren."
+                }
+            })
+
+            Beacon("prefill", {
+                subject: "Pentacode Demoanfrage"
+            });
+
+            Beacon("open");
+        }
+
+        const heroButton = document.querySelector(".call-to-action");
+        heroButton.addEventListener("click", scheduleDemo);
     </script>
 
     {{!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. --}}

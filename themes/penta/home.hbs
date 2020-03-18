@@ -21,7 +21,7 @@ into the {body} of the default.hbs template --}}
                     modernen, intutiven und leistungsfähigem Packet.
                 </h3>
 
-                <button class="hero-button">Jetzt Demo Vereinbaren</button>
+                <button class="call-to-action">Jetzt Demo Vereinbaren</button>
 
                 <div class="carousel">
                     <img class="site-hero-image" src="{{asset "img/screens/roster.png"}}" />
@@ -94,22 +94,6 @@ into the {body} of the default.hbs template --}}
             opacity: 0;
             will-change: transform, opacity;
             transform: translate3d(0, 0, -300px);
-        }
-
-        .hero-button {
-            border: solid 1px #3eb0ef;
-            color: #3eb0ef;
-            border-radius: 40px;
-            line-height: 40px;
-            padding: 0 15px;
-            margin: 20px;
-            transition: all 0.3s;
-            outline: none !important;
-        }
-
-        .hero-button:hover {
-            color: #fff;
-            background: #3eb0ef;
         }
     </style>
 {{/contentFor}}
@@ -191,42 +175,6 @@ into the {body} of the default.hbs template --}}
 
         updateCarousel();
         setInterval(updateCarousel, 5000);
-
-        /* CALL TO ACTION SETUP */
-
-        function scheduleDemo() {
-            Beacon("config", {
-                hideAvatars: true,
-                messaging: {
-                    chatEnabled: false,
-                    contactForm: {
-                        allowAttachments: false,
-                        showSubject: false
-                    }
-                },
-                labels: {
-                    sendAMessage: "Einen Demotermin Vereinbaren",
-                    howCanWeHelp: "Wir freuen uns darauf, Ihnen Pentacode vorzustellen und nehmen " +
-                        "uns gerne Zeit, Ihre Wünsche und Anforderungen zu besprechen.",
-                    responseTime: "",
-                    messageLabel: "Erzählen Sie uns ein klein wenig über Ihren Betrieb " +
-                        "damit wir besser auf Ihre Wünschen eingehen können!",
-                    messageSubmitLabel: "Anfrage Senden",
-                    wereHereToHelp: "",
-                    weAreOnIt: "Vielen Dank für Ihre Anfrage!",
-                    messageConfirmationText: "Wir werden uns Zeitnah bei Ihnen melden um einen Termin zu vereinbaren."
-                }
-            })
-
-            Beacon("prefill", {
-                subject: "Pentacode Demoanfrage"
-            });
-
-            Beacon("open");
-        }
-
-        const heroButton = document.querySelector(".hero-button");
-        heroButton.addEventListener("click", scheduleDemo);
 
     });
 </script>

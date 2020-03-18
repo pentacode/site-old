@@ -49,6 +49,22 @@ body {
     text-indent: -9999px;
 }
 
+.call-to-action {
+    border: solid 1px var(--blue);
+    color: var(--blue);
+    border-radius: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    margin: 20px;
+    transition: all 0.3s;
+    outline: none !important;
+}
+
+.call-to-action:hover {
+    color: #fff;
+    background: var(--blue);
+}
+
 /* 2. Layout - Page building blocks
 /* ---------------------------------------------------------- */
 
@@ -308,6 +324,11 @@ body {
     overflow: hidden;
     height: 64px;
     font-size: 1.3rem;
+}
+
+.site-nav .call-to-action {
+    line-height: 30px;
+    padding: 0 10px;
 }
 
 .site-nav-main.fixed-nav-active,
