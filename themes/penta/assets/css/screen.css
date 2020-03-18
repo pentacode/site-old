@@ -58,6 +58,7 @@ body {
     margin: 20px;
     transition: all 0.3s;
     outline: none !important;
+    background: #fff;
 }
 
 .call-to-action:hover {
