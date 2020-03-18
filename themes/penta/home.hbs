@@ -21,6 +21,8 @@ into the {body} of the default.hbs template --}}
                     modernen, intutiven und leistungsfähigem Packet.
                 </h3>
 
+                <button class="hero-button">Jetzt Demo Vereinbaren</button>
+
                 <div class="carousel">
                     <img class="site-hero-image" src="{{asset "img/screens/roster.png"}}" />
                     <img class="site-hero-image" src="{{asset "img/screens/time-tracker.png"}}" />
@@ -90,6 +92,24 @@ into the {body} of the default.hbs template --}}
             bottom: 0;
             transition: all 1.5s;
             opacity: 0;
+            will-change: transform, opacity;
+            transform: translate3d(0, 0, -300px);
+        }
+
+        .hero-button {
+            border: solid 1px #3eb0ef;
+            color: #3eb0ef;
+            border-radius: 40px;
+            line-height: 40px;
+            padding: 0 15px;
+            margin: 20px;
+            transition: all 0.3s;
+            outline: none !important;
+        }
+
+        .hero-button:hover {
+            color: #fff;
+            background: #3eb0ef;
         }
     </style>
 {{/contentFor}}
@@ -149,9 +169,11 @@ into the {body} of the default.hbs template --}}
 
         update();
 
+        /* CAROUSEL SETUP */
+
         const carousel = document.querySelector(".carousel");
-        let carouselIndex = -1;
         const carouselCount = carousel.children.length;
+        let carouselIndex = 2;
 
         function updateCarousel() {
             carouselIndex = (carouselIndex - 1 + carouselCount) % carouselCount;
@@ -159,7 +181,6 @@ into the {body} of the default.hbs template --}}
             for (let i = 0; i < carouselCount; i++) {
                 const el = carousel.children[i];
                 const pos = (carouselIndex + i) % carouselCount;
-                console.log(pos);
                 Object.assign(el.style, {
                     transform: `translate3d(0, ${pos === 0 ? "100%" : "0"}, ${1-pos * 50}px)`,
                     zIndex: -pos,
@@ -170,6 +191,42 @@ into the {body} of the default.hbs template --}}
 
         updateCarousel();
         setInterval(updateCarousel, 5000);
+
+        /* CALL TO ACTION SETUP */
+
+        function scheduleDemo() {
+            Beacon("config", {
+                hideAvatars: true,
+                messaging: {
+                    chatEnabled: false,
+                    contactForm: {
+                        allowAttachments: false,
+                        showSubject: false
+                    }
+                },
+                labels: {
+                    sendAMessage: "Einen Demotermin Vereinbaren",
+                    howCanWeHelp: "Wir freuen uns darauf, Ihnen Pentacode vorzustellen und nehmen " +
+                        "uns gerne Zeit, Ihre Wünsche und Anforderungen zu besprechen.",
+                    responseTime: "",
+                    messageLabel: "Erzählen Sie uns ein klein wenig über Ihren Betrieb " +
+                        "damit wir besser auf Ihre Wünschen eingehen können!",
+                    messageSubmitLabel: "Anfrage Senden",
+                    wereHereToHelp: "",
+                    weAreOnIt: "Vielen Dank für Ihre Anfrage!",
+                    messageConfirmationText: "Wir werden uns Zeitnah bei Ihnen melden um einen Termin zu vereinbaren."
+                }
+            })
+
+            Beacon("prefill", {
+                subject: "Pentacode Demoanfrage"
+            });
+
+            Beacon("open");
+        }
+
+        const heroButton = document.querySelector(".hero-button");
+        heroButton.addEventListener("click", scheduleDemo);
 
     });
 </script>
