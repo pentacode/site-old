@@ -13,12 +13,11 @@ into the {body} of the default.hbs template --}}
                 </h1>
 
                 <h2 class="site-description">
-                    Die All-In-One Backoffice-Lösung für die Gastronomie.
+                    {{ @site.title }}
                 </h2>
 
                 <h3>
-                    <strong>Personal- und Dienstplanung</strong>, <strong>Zeiterfassung</strong> und <strong>Kassenbuch</strong> in einem
-                    modernen, intutiven und leistungsfähigem Packet.
+                    {{ @site.description }}
                 </h3>
 
                 <button class="call-to-action">Jetzt Demo Vereinbaren</button>
@@ -90,7 +89,7 @@ into the {body} of the default.hbs template --}}
             top: 10px;
             right: 10px;
             bottom: 10px;
-            transition: all 1.5s;
+            transition: all 2s;
             opacity: 0;
             will-change: transform, opacity;
             transform: translate3d(0, 0, -300px);
@@ -168,7 +167,7 @@ into the {body} of the default.hbs template --}}
                 Object.assign(el.style, {
                     transform: `translate3d(0, ${pos === 0 ? "100%" : "0"}, ${1-pos * 50}px)`,
                     zIndex: -pos,
-                    opacity: (pos === 0 || pos >= 4) ? 0 : 1
+                    opacity: (pos > 3) ? 0 : 1
                 });
             }
         }

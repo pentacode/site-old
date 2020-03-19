@@ -220,14 +220,13 @@ body {
 
 .site-home-header .site-title {
     font-size: 5.5rem;
-    text-align: left;
 }
 
 .site-home-header .site-description {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-weight: 300;
-    text-align: left;
     max-width: 600px;
+    color: var(--blue);
 }
 
 .site-home-header h3 {
